@@ -5,10 +5,17 @@ class Input
 {
     private $vars = [];
 
-    public function get(string $name)
+    /**
+     * @param string $name
+     * @param mixed|null $default
+     * @return mixed|null
+     */
+    public function get(string $name, $default = null)
     {
-        if (!$this->has($name)) {
+        if (!$this->has($name) && $default === null) {
             throw new \RuntimeException("could not get '$name'");
+        } elseif (!$this->has($name) && $default !== null) {
+            return $default;
         }
 
         return $this->vars[$name];

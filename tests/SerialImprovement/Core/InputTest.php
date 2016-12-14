@@ -31,6 +31,20 @@ class InputTest extends \PHPUnit_Framework_TestCase
         $input->get('key_does_not_exist');
     }
 
+    public function testGetNotExistsWithDefault()
+    {
+        $input = new Input();
+        $this->assertEquals('teapot', $input->get('key_does_not_exist_but_has_default', 'teapot'));
+    }
+
+    public function testGetGetsRealValueInsteadOfDefault()
+    {
+        $input =  Input::buildFromHash([
+            'banana' => 'man'
+        ]);
+        $this->assertEquals('man', $input->get('banana', 'teapot'));
+    }
+
     public function testFromHash()
     {
         $input = Input::buildFromHash([
