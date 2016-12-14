@@ -1,6 +1,6 @@
 {
     "name": "serialimprovement/core",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A few core php classes that are useful in many projects",
     "minimum-stability": "dev",
     "license": "proprietary",
