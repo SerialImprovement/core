@@ -69,4 +69,12 @@ class InputTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($new->has('user'));
         $this->assertTrue($new->has('loggedIn'));
     }
+
+    public function testMagicGetSet()
+    {
+        $input = new Input();
+        $input->banana = 'split';
+
+        $this->assertSame('split', $input->banana);
+    }
 }

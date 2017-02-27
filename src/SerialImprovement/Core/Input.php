@@ -19,9 +19,19 @@ class Input
         return $this->vars[$name];
     }
 
+    public function __get(string $name)
+    {
+        return $this->get($name);
+    }
+
     public function set(string $name, $value)
     {
         $this->vars[$name] = $value;
+    }
+
+    public function __set(string $name, $value)
+    {
+        $this->set($name, $value);
     }
 
     public function remove(string $name)
