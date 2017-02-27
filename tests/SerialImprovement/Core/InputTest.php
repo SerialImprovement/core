@@ -22,13 +22,10 @@ class InputTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($input->has('banana'));
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testGetNotExists()
     {
         $input = new Input();
-        $input->get('key_does_not_exist');
+        $this->assertNull($input->get('key_does_not_exist'));
     }
 
     public function testGetNotExistsWithDefault()

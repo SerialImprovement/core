@@ -12,9 +12,7 @@ class Input
      */
     public function get(string $name, $default = null)
     {
-        if (!$this->has($name) && $default === null) {
-            throw new \RuntimeException("could not get '$name'");
-        } elseif (!$this->has($name) && $default !== null) {
+        if (!$this->has($name)) {
             return $default;
         }
 
