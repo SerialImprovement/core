@@ -3,7 +3,12 @@ namespace SerialImprovement\Core;
 
 class Input
 {
-    private $vars = [];
+    protected $vars;
+
+    public function __construct(array $vars = [])
+    {
+        $this->vars = $vars;
+    }
 
     /**
      * @param string $name
@@ -52,7 +57,7 @@ class Input
      */
     public function extract(array $keys): Input
     {
-        $input = static::buildFromHash([]);
+        $input = new self();
 
         foreach ($keys as $key) {
             $input->set($key, $this->get($key));
@@ -66,6 +71,9 @@ class Input
         return $this->vars;
     }
 
+    /**
+     * @deprecated just use the constructor now `new Input(['foo' => 'bar'])`
+     */
     public static function buildFromHash(array $hash): Input
     {
         $input = new Input();
